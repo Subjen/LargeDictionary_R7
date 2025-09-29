@@ -5,6 +5,7 @@ namespace LargeDictionary_R7
     public class LargeDictionary<TKey, TValue> where TKey : notnull
     {
         private const int PageSize = 1000000;
+        private const int InitDictSize = 1000;
         private readonly Dictionary<int, Dictionary<TKey, TValue>> Pages;
 
         public LargeDictionary() 
@@ -33,7 +34,7 @@ namespace LargeDictionary_R7
 
             if (!Pages.TryGetValue(pageIndex, out var page))
             {
-                page = new Dictionary<TKey, TValue>(PageSize / 1000);
+                page = new Dictionary<TKey, TValue>(InitDictSize);
                 Pages[pageIndex] = page;
             }
 
