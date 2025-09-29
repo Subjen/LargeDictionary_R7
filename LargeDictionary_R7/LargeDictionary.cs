@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace LargeDictionary_R7
 {
     public class LargeDictionary<TKey, TValue> where TKey : notnull
     {
-        private const int PageSize = 1000000; // 1M элементов на страницу
+        private const int PageSize = 1000000;
         private readonly Dictionary<int, Dictionary<TKey, TValue>> Pages;
 
         public LargeDictionary() 
@@ -30,10 +24,6 @@ namespace LargeDictionary_R7
             }
             set => Add(key, value);
         }
-
-        public ICollection<TKey> Keys => throw new NotImplementedException(); //_pages.Values.Select(page => page.Keys);
-
-        public ICollection<TValue> Values => throw new NotImplementedException();
 
         public long Count => Pages.Values.Sum(page => (long)page.Count);
 

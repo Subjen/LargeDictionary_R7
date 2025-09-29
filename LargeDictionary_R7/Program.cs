@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-using LargeDictionary_R7;
+﻿using LargeDictionary_R7;
 using System.Diagnostics;
 
 var len = int.MaxValue >> 2;
